@@ -1,0 +1,872 @@
+@property --ballClr {
+    syntax: '<color>';
+    /* <- defined as type number for the transition to work */
+    initial-value: #eeeeee;
+    inherits: false;
+}
+
+.greeting-text {
+    position: absolute;
+    font-family: "Gogol", sans-serif;
+    font-size: 5rem;
+    color: #34bbda;
+    white-space: nowrap;
+    z-index: 10;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.text-left {
+    top: 4%;
+    left: -61%;
+}
+
+.text-right {
+    top: 4%;
+    left: 98%;
+}
+
+.tree-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+}
+
+.tree {
+    display: block;
+    width: 100%;
+}
+
+.star-container {
+    position: absolute;
+    top: 7%;
+    left: 54.8%;
+    transform: translate(-50%, -50%);
+    width: 33%;
+}
+
+.star {
+    display: block;
+    width: 100%;
+    --lampClr: #fbff07;
+    transition: all 0.5s;
+}
+
+.star:hover {
+    transform: rotate(5deg);
+    filter: drop-shadow(0 0 0.05rem var(--lampClr));
+}
+
+.star-glow {
+    position: absolute;
+    top: -25%;
+    left: -21%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.5) 20%,
+            rgba(255, 215, 0, 0) 70%);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+.lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.lights img {
+    position: absolute;
+    width: 68%;
+    /* animation: group-blink 3s infinite; */
+}
+
+.light1 {
+    top: 30%;
+    left: 20%;
+    animation: group-blink 3s infinite;
+    animation-delay: 0s;
+}
+
+.light2 {
+    top: 9%;
+    left: 16%;
+    animation: group-blink 2s infinite;
+    animation-delay: 0.5s;
+}
+
+.light3 {
+    top: 19%;
+    left: 36%;
+    width: 42% !important;
+    animation: group-blink 3s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes group-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        /* transform: scale(1); */
+    }
+
+    50% {
+        opacity: 0.6;
+        /* transform: scale(0.9); */
+    }
+}
+
+.bear-container {
+    position: absolute;
+    top: 31%;
+    left: 87%;
+    width: 33%;
+    pointer-events: none;
+    animation: animal2 3s alternate ease-in infinite 0.5s;
+}
+
+.rabbit-container {
+    position: absolute;
+    top: 51%;
+    left: 115%;
+    width: 35%;
+    pointer-events: none;
+    animation: animal 3s alternate ease-in infinite 1s;
+}
+
+.fox-container {
+    position: absolute;
+    top: 31%;
+    left: -28%;
+    width: 33%;
+    pointer-events: none;
+    animation: animal 3s alternate ease-in infinite 0.7s;
+}
+
+.ball {
+    width: 10%;
+    position: absolute;
+    z-index: 0;
+    transition: all 0.5s;
+}
+
+.ball-red {
+    --lampClr: #ff0707;
+}
+
+.ball-blue {
+    --lampClr: #07c5ff;
+}
+
+.ball:hover {
+    animation: twitching 500ms alternate ease-in infinite;
+    filter: drop-shadow(0 0 0.05rem var(--lampClr));
+}
+
+.star-container {
+    position: absolute;
+    top: 7%;
+    left: 54.8%;
+    transform: translate(-50%, -50%);
+    width: 33%;
+}
+
+.star {
+    display: block;
+    width: 100%;
+}
+
+.star-glow {
+    position: absolute;
+    top: -25%;
+    left: -21%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(255, 215, 0, 0.5) 20%,
+            rgba(255, 215, 0, 0) 70%);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+.lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.lights img {
+    position: absolute;
+    width: 68%;
+}
+
+@keyframes glow-watched {
+    0% {
+        filter: drop-shadow(0 0 0.00rem var(--lampClr));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 0.15rem var(--lampClr));
+    }
+
+    100% {
+        filter: drop-shadow(0 0 0.00rem var(--lampClr));
+    }
+}
+
+.ball-watched {
+    animation: glow-watched 3s infinite;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    background-color: #dfae9f;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+
+.modal .close:hover {
+    background-color: #e64a19;
+}
+
+.modal-open {
+    backdrop-filter: blur(10px);
+}
+
+#objsContainer {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#light1 {
+    top: 30%;
+    left: 20%;
+    animation: group-blink 3s infinite;
+    animation-delay: 0s;
+}
+
+#light2 {
+    top: 9%;
+    left: 16%;
+    animation: group-blink 2s infinite;
+    animation-delay: 0.5s;
+}
+
+#light3 {
+    top: 19%;
+    left: 36%;
+    width: 42% !important;
+    animation: group-blink 3s infinite;
+    animation-delay: 1s;
+}
+
+@keyframes group-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        /* transform: scale(1); */
+    }
+
+    50% {
+        opacity: 0.6;
+        /* transform: scale(0.9); */
+    }
+}
+
+#dupor {
+    top: 11%;
+    left: 42%;
+}
+
+#sa {
+    top: 22%;
+    left: 28%;
+}
+
+#diis {
+    top: 21%;
+    left: 57%;
+}
+
+#sk {
+    top: 29%;
+    left: 41%;
+}
+
+#kts {
+    top: 32%;
+    left: 62%;
+}
+
+#mosсow {
+    top: 39%;
+    left: 19%;
+}
+
+#dsil {
+    top: 42%;
+    left: 52%;
+}
+
+#ntu {
+    top: 48%;
+    left: 34%;
+}
+
+#otiz {
+    top: 43%;
+    left: 74%;
+}
+
+#pdop {
+    top: 58%;
+    left: 14%;
+}
+
+#kd {
+    top: 54%;
+    left: 50%;
+}
+
+#dsvch {
+    top: 61%;
+    left: 70%;
+}
+
+#dkz {
+    top: 70%;
+    left: 56%;
+}
+
+#dap {
+    top: 71%;
+    left: 16%;
+}
+
+#zraa {
+    top: 70%;
+    left: 79%;
+}
+
+#df {
+    top: 82%;
+    left: 17%;
+}
+
+#dtk {
+    top: 77%;
+    left: 40%;
+}
+
+#ds {
+    top: 66%;
+    left: 34%;
+}
+
+#pd {
+    top: 81%;
+    left: 69%;
+}
+
+#box {
+    position: absolute;
+    top: 78.5%;
+    left: -65%;
+    width: 32%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+#box2 {
+    position: absolute;
+    top: 78.5%;
+    left: -65%;
+    width: 32%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#boxcap {
+    position: absolute;
+    rotate: 14deg;
+    top: 70%;
+    left: -62%;
+    width: 28%;
+    pointer-events: none;
+    z-index: 2;
+    animation: dedBounce 3s alternate ease-in infinite;
+}
+
+#ded {
+    position: absolute;
+    top: 80.5%;
+    left: -66%;
+    width: 28%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce2 3s alternate ease-in infinite;
+}
+
+#confeti1 {
+    position: absolute;
+    top: 90%;
+    left: -50%;
+    width: 4%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce3 3s alternate ease-in infinite;
+}
+
+#confeti2 {
+    position: absolute;
+    top: 90%;
+    left: -50%;
+    width: 4%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce4 3s alternate ease-in infinite;
+}
+
+#confeti3 {
+    position: absolute;
+    top: 85%;
+    left: -60%;
+    width: 4%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce5 3s alternate ease-in infinite;
+}
+
+#confeti4 {
+    position: absolute;
+    top: 85%;
+    left: -60%;
+    width: 8%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce6 3s alternate ease-in infinite;
+}
+
+#confeti5 {
+    position: absolute;
+    top: 85%;
+    left: -60%;
+    width: 3%;
+    pointer-events: none;
+    z-index: 1;
+    animation: dedBounce7 3s alternate ease-in infinite;
+}
+
+@keyframes dedBounce {
+    from {
+        rotate: 14deg;
+        top: 70%;
+        left: -62%;
+        width: 28%;
+    }
+
+    to {
+        top: 48%;
+        left: -72%;
+        width: 28%;
+    }
+}
+
+@keyframes dedBounce2 {
+    from {
+        top: 80.5%;
+        left: -66%;
+        width: 28%;
+    }
+
+    to {
+        top: 58.3%;
+        left: -75.4%;
+        width: 50%;
+    }
+}
+
+@keyframes dedBounce3 {
+    from {
+        top: 90%;
+        left: -50%;
+    }
+
+    to {
+        top: 69%;
+        left: -27%;
+    }
+}
+
+@keyframes dedBounce4 {
+    from {
+        top: 90%;
+        left: -50%;
+    }
+
+    to {
+        top: 64%;
+        left: -25%;
+    }
+}
+
+@keyframes dedBounce5 {
+    from {
+        top: 85%;
+        left: -60%;
+    }
+
+    to {
+        top: 78%;
+        left: -67%;
+    }
+}
+
+@keyframes dedBounce6 {
+    from {
+        top: 85%;
+        left: -60%;
+    }
+
+    to {
+        top: 70%;
+        left: -75%;
+    }
+}
+
+@keyframes dedBounce7 {
+    from {
+        top: 85%;
+        left: -60%;
+    }
+
+    to {
+        top: 61%;
+        left: -70%;
+    }
+}
+
+@keyframes animal {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: -5deg;
+    }
+}
+
+@keyframes animal2 {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 5deg;
+    }
+}
+
+.animal,
+.not-animal {
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .tree-container {
+        width: 250px;
+    }
+
+    .star-container {
+        width: 40%;
+        top: 8%;
+        left: 57%;
+    }
+
+    .greeting-text {
+        font-size: 4rem;
+    }
+
+    .text-left {
+        top: -54%;
+        left: 5%;
+    }
+
+    .text-right {
+        top: -34%;
+        left: -14%;
+    }
+
+    .rabbit-container {
+        top: 62%;
+        left: 90%;
+        z-index: 1;
+    }
+
+    .bear-container {
+        top: 41%;
+        left: 87%;
+    }
+
+    .fox-container {
+        top: 43%;
+        left: -24%;
+    }
+
+    #box {
+        top: 100%;
+        left: -10%;
+    }
+
+    #box2 {
+        top: 100%;
+        left: -10%;
+    }
+
+    #boxcap {
+        top: 89%;
+        left: -9.5%;
+        animation: dedBounce1 3s alternate ease-in infinite;
+    }
+
+    #ded {
+        top: 102%;
+        left: -10%;
+        animation: dedBounce21 3s alternate ease-in infinite;
+    }
+
+    #confeti1 {
+        top: 113%;
+        left: 2%;
+        animation: dedBounce31 3s alternate ease-in infinite;
+    }
+
+    #confeti2 {
+        top: 113%;
+        left: 2%;
+        animation: dedBounce41 3s alternate ease-in infinite;
+    }
+
+    #confeti3 {
+        top: 110%;
+        left: 0%;
+        animation: dedBounce51 3s alternate ease-in infinite;
+    }
+
+    #confeti4 {
+        top: 110%;
+        left: 0%;
+        animation: dedBounce61 3s alternate ease-in infinite;
+    }
+
+    #confeti5 {
+        top: 110%;
+        left: 0%;
+        animation: dedBounce71 3s alternate ease-in infinite;
+    }
+
+    @keyframes dedBounce1 {
+        from {
+            rotate: 14deg;
+            top: 89%;
+            left: -9.5%;
+        }
+
+        to {
+            top: 61%;
+            left: -11%;
+        }
+    }
+
+    @keyframes dedBounce21 {
+        from {
+            top: 102%;
+            left: -10%;
+            width: 28%;
+        }
+
+        to {
+            top: 79%;
+            left: -20%;
+            width: 50%;
+        }
+    }
+
+    @keyframes dedBounce31 {
+        from {
+            top: 113%;
+            left: 2%;
+        }
+
+        to {
+            top: 90%;
+            left: 30%;
+        }
+    }
+
+    @keyframes dedBounce41 {
+        from {
+            top: 113%;
+            left: 2%;
+        }
+
+        to {
+            top: 84%;
+            left: 30%;
+        }
+    }
+
+    @keyframes dedBounce51 {
+        from {
+            top: 110%;
+            left: 0%;
+        }
+
+        to {
+            top: 90%;
+            left: -15%;
+        }
+    }
+
+    @keyframes dedBounce61 {
+        from {
+            top: 110%;
+            left: 0%;
+        }
+
+        to {
+            top: 80%;
+            left: -20%;
+        }
+    }
+
+    @keyframes dedBounce71 {
+        from {
+            top: 110%;
+            left: 0%;
+        }
+
+        to {
+            top: 75%;
+            left: -13%;
+        }
+    }
+}
+
+
+@keyframes twitching {
+    from {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+
+}
+
+@media (orientation: landscape) and (max-width: 1000px) {
+    .tree-container {
+        width: 180px;
+        /* Уменьшаем ёлку в горизонтальном положении */
+        top: 54%;
+    }
+
+    .star-container {
+        width: 35%;
+        top: 10%;
+        left: 55%;
+    }
+
+    .greeting-text {
+        font-size: 2rem;
+    }
+}
