@@ -139,13 +139,15 @@ globalThis.addEventListener("load", () => {
                     hVideos[obj].bElm.classList.add("ball-watched");
                 }
             }
-
-            hVideos[obj].bElm.addEventListener("click", () => {
-                updateWatchedState(obj);
-            });
         }
     } else {
         set_storage_obj__ls("ornamentData", hVideos);
+    }
+
+    for (const obj in hVideos) {
+        hVideos[obj].bElm.addEventListener("click", () => {
+            updateWatchedState(obj);
+        });
     }
 });
 
