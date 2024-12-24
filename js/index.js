@@ -151,26 +151,37 @@ globalThis.addEventListener("load", () => {
     }
 });
 
+globalThis.addEventListener("message", handleMessage);
+
+function handleMessage(event) {
+    if (!event.data) return;
+
+    let ev_type;
+    let ev_data;
+
+    try {
+        const data = JSON.parse(event.data);
+        ev_type = data.type;
+        ev_data = data.data;
+    } catch (err) {
+        ev_type = "JSON invalid";
+    }
+
+    if (ev_type === "player:ready") {
+        if (iframe_elm && iframe_elm.contentWindow) {
+            iframe_elm.contentWindow.postMessage(
+                JSON.stringify({ type: "player:play", data: {} }),
+                "*"
+            );
+        }
+    }
+}
+
 modClose_elm.addEventListener("click", () => {
     iframe_elm.src = "";
     modal_elm.style.display = "none";
     modal_elm.classList.remove("modal-open");
 });
-
-// Обработка при нажатии 
-// ornamentModal_elm.addEventListener("show.bs.modal", (e) => {
-//     const tmpBtn = e.relatedTarget;
-//     const tmpId = tmpBtn.id;
-//     const tmpWatched = (hVideos[tmpId].bWatched) ? "Просмотрено" : "Не просмотрено";
-//     const depName = `${hVideos[tmpId].departName} ${tmpWatched}`;
-
-//     departName_elm.innerText = depName;
-//     departVideo_elm.src = hVideos[tmpId].videoUrl;
-
-//     hVideos[tmpId].bWatched = true;
-//     saveOrnamentData();
-
-// });
 
 document.addEventListener('mousemove', (event) => {
     const x = (event.clientX / window.innerWidth) * ratio[0] - (ratio[0] / 2);
